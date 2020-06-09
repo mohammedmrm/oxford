@@ -1,0 +1,76 @@
+<?php
+session_start();
+error_reporting(0);
+header('Content-Type: application/json');
+require_once("_access.php");
+access([1,2,4]);
+require_once("dbconnection.php");
+require_once("_crpt.php");
+
+use Violin\Violin;
+require_once('../validator/autoload.php');
+$v = new Violin;
+
+
+$success = 0;
+$error = [];
+
+$branch= $_SESSION['user_details']['branch_id'];
+$start = trim($_REQUEST['start']);
+$end = trim($_REQUEST['end']);
+if(empty($end)) {
+  $end = date('Y-m-d',strtotime(' + 1 day'));
+}
+if(empty($start)) {
+  $start = date('Y-m-d',strtotime(' - 30 day'));
+}
+
+if(!validateDate($start)){
+  $start_err = "تاريخ البداية غير صالح";
+}else{
+  $start_err = "";
+}
+
+if(!validateDate($end)){
+  $end_err = "تاريخ النهاية غير صالح";
+}else{
+ $end_err="";
+}
+
+$v->addRuleMessages([
+    'required' => 'الحقل مطلوب',
+    'int'      => 'فقط الارقام مسموع بها',
+    'regex'      => 'فقط الارقام مسموع بها',
+    'min'      => 'قصير جداً',
+    'max'      => 'مسموح ب {value} رمز كحد اعلى ',
+    'email'      => 'البريد الالكتروني غيز صحيح',
+]);
+
+$v->validate([
+    'branch'    => [$branch,'int'],
+]);
+
+
+if($v->passes() && $start_err == "" && $end_err == "")  {
+
+  $sql= "select branch_balance.*,DATE_FORMAT(branch_balance.date,'%Y-%m-%d %h:%i') as date , branches.name as branch_name from branch_balance
+         inner join branches on branches.id = branch_balance.branch_id
+         where branch_balance.branch_id = '".$branch."' and branch_balance.date between '".$start."' and '".$end."'
+         order by date DESC
+         ";
+
+
+  $res = getData($con,$sql);
+  if(count($res) > 0){
+    $success = 1;
+  }
+
+}else{
+  $error = [
+           'end'=> $end_err,
+           'start'=>$start_err,
+           ];
+}
+
+echo json_encode(["data"=>$res,'success'=>$success, 'error'=>$error,'role'=>$_SESSION['user_details']['role_id'],'branch'=>$branch]);
+?>
