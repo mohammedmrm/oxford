@@ -47,8 +47,9 @@ License: You must have a valid license purchased only from https://themes.getboo
         <link href="./assets/css/demo1/skins/aside/navy.rtl.css" rel="stylesheet" type="text/css" />
         <link href="bootstrap-4.3.1-dist1/css/toast.css" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
-        <link href="" rel="stylesheet">
-        <link rel="shortcut icon" href="./assets/media/logos/favicon.ico" />
+        <link rel="manifest" href="pwa/site.webmanifest">
+        <link rel="shortcut icon" href="pwa/android-launchericon-72-72.png" />
+        <link rel="apple-touch-icon" href="pwa/android-launchericon-96-96.png">
 <style>
         /* arabic */
         @font-face {
@@ -216,6 +217,14 @@ License: You must have a valid license purchased only from https://themes.getboo
               $('[data-toggle="tooltip"]').tooltip()
               });
         </script>
+      <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+         window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+        });
+      }
+      </script>
 	</body>
 
 	<!-- end::Body -->

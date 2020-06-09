@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2020 at 09:00 AM
+-- Generation Time: Jun 09, 2020 at 05:03 PM
 -- Server version: 5.7.20
 -- PHP Version: 7.1.11
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `award_penalty`
 --
 
-CREATE TABLE IF NOT EXISTS `award_penalty` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `award_penalty` (
+  `id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `staff_id` int(11) NOT NULL,
   `status` int(11) DEFAULT NULL,
@@ -37,15 +37,19 @@ CREATE TABLE IF NOT EXISTS `award_penalty` (
   `year` int(4) NOT NULL,
   `month` int(2) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `note` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+  `note` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `award_penalty`
+--
+
+TRUNCATE TABLE `award_penalty`;
 --
 -- Dumping data for table `award_penalty`
 --
 
-INSERT INTO `award_penalty` (`id`, `amount`, `staff_id`, `status`, `type`, `year`, `month`, `date`, `note`) VALUES
+INSERT IGNORE INTO `award_penalty` (`id`, `amount`, `staff_id`, `status`, `type`, `year`, `month`, `date`, `note`) VALUES
 (9, 120, 1, NULL, 1, 2020, 1, '2020-01-26 17:49:59', 'Good work'),
 (10, 50, 2, NULL, 1, 2020, 1, '2020-01-26 17:50:42', 'bad'),
 (11, 50, 4, NULL, 2, 2020, 1, '2020-01-31 17:00:46', 'delay');
@@ -56,23 +60,27 @@ INSERT INTO `award_penalty` (`id`, `amount`, `staff_id`, `status`, `type`, `year
 -- Table structure for table `balance`
 --
 
-CREATE TABLE IF NOT EXISTS `balance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `balance` (
+  `id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `balance` float NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `money` float NOT NULL,
   `branch_id` int(11) NOT NULL,
   `reason` varchar(250) NOT NULL,
-  `note` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+  `note` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `balance`
+--
+
+TRUNCATE TABLE `balance`;
 --
 -- Dumping data for table `balance`
 --
 
-INSERT INTO `balance` (`id`, `date`, `balance`, `status`, `money`, `branch_id`, `reason`, `note`) VALUES
+INSERT IGNORE INTO `balance` (`id`, `date`, `balance`, `status`, `money`, `branch_id`, `reason`, `note`) VALUES
 (1, '2020-01-05 20:54:54', 500, 1, 500, 1, 'قسط الطالب - REG-OXF-BAB-0005-19', 'تسديد قسط دراسي'),
 (2, '2020-01-05 21:03:48', 800, 1, 300, 1, 'قسط الطالب )REG-OXF-BAB-0007-19(', 'تسديد قسط دراسي'),
 (3, '2019-12-05 22:10:34', 900, 1, 100, 1, 'قسط الطالب )REG-OXF-BAB-0007-19(', 'تسديد قسط دراسي'),
@@ -119,22 +127,26 @@ INSERT INTO `balance` (`id`, `date`, `balance`, `status`, `money`, `branch_id`, 
 -- Table structure for table `branches`
 --
 
-CREATE TABLE IF NOT EXISTS `branches` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `branches` (
+  `id` int(11) NOT NULL,
   `serial` varchar(4) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `note` varchar(250) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone` varchar(18) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+  `phone` varchar(18) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `branches`
+--
+
+TRUNCATE TABLE `branches`;
 --
 -- Dumping data for table `branches`
 --
 
-INSERT INTO `branches` (`id`, `serial`, `date`, `note`, `name`, `email`, `phone`) VALUES
+INSERT IGNORE INTO `branches` (`id`, `serial`, `date`, `note`, `name`, `email`, `phone`) VALUES
 (1, 'BAG', '2019-11-30 15:32:25', '', 'فرع بغداد', 'bag@oxf.com', '07822816693'),
 (5, 'NAJ', '2019-12-18 18:02:57', '', 'فرع النجف', 'Najaf@oxf.com', '07822816693'),
 (6, 'BAB', '2020-01-12 22:49:34', '', 'فرع الحلة', 'bab@oxf.org', '09876543211'),
@@ -146,23 +158,27 @@ INSERT INTO `branches` (`id`, `serial`, `date`, `note`, `name`, `email`, `phone`
 -- Table structure for table `branch_balance`
 --
 
-CREATE TABLE IF NOT EXISTS `branch_balance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `branch_balance` (
+  `id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `balance` double NOT NULL,
   `status` int(11) NOT NULL,
   `money` double NOT NULL,
   `reason` varchar(250) DEFAULT NULL,
   `note` varchar(250) DEFAULT NULL,
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `branch_balance`
+--
+
+TRUNCATE TABLE `branch_balance`;
 --
 -- Dumping data for table `branch_balance`
 --
 
-INSERT INTO `branch_balance` (`id`, `date`, `balance`, `status`, `money`, `reason`, `note`, `branch_id`) VALUES
+INSERT IGNORE INTO `branch_balance` (`id`, `date`, `balance`, `status`, `money`, `reason`, `note`, `branch_id`) VALUES
 (3, '2020-01-13 17:50:42', 500, 1, 500, NULL, '', 1),
 (4, '2020-02-13 17:52:12', 400, 0, 100, 'Stuff', '', 1),
 (5, '2020-01-13 17:55:39', 350, 0, 50, 'Award', '', 1),
@@ -174,21 +190,25 @@ INSERT INTO `branch_balance` (`id`, `date`, `balance`, `status`, `money`, `reaso
 -- Table structure for table `cash`
 --
 
-CREATE TABLE IF NOT EXISTS `cash` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cash` (
+  `id` int(11) NOT NULL,
   `branch_id` int(11) NOT NULL,
   `money` double NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `confirm` int(11) NOT NULL DEFAULT '0',
-  `note` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+  `note` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `cash`
+--
+
+TRUNCATE TABLE `cash`;
 --
 -- Dumping data for table `cash`
 --
 
-INSERT INTO `cash` (`id`, `branch_id`, `money`, `date`, `confirm`, `note`) VALUES
+INSERT IGNORE INTO `cash` (`id`, `branch_id`, `money`, `date`, `confirm`, `note`) VALUES
 (23, 1, 500, '2020-01-13 17:49:32', 2, '');
 
 -- --------------------------------------------------------
@@ -197,18 +217,22 @@ INSERT INTO `cash` (`id`, `branch_id`, `money`, `date`, `confirm`, `note`) VALUE
 -- Table structure for table `config`
 --
 
-CREATE TABLE IF NOT EXISTS `config` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `config` (
+  `id` int(11) NOT NULL,
   `maxDiscount` int(11) NOT NULL DEFAULT '100',
-  `logo` varchar(250) NOT NULL DEFAULT 'logos/logo.png',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `logo` varchar(250) NOT NULL DEFAULT 'logos/logo.png'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `config`
+--
+
+TRUNCATE TABLE `config`;
 --
 -- Dumping data for table `config`
 --
 
-INSERT INTO `config` (`id`, `maxDiscount`, `logo`) VALUES
+INSERT IGNORE INTO `config` (`id`, `maxDiscount`, `logo`) VALUES
 (1, 100, 'logos/logo.png');
 
 -- --------------------------------------------------------
@@ -217,20 +241,24 @@ INSERT INTO `config` (`id`, `maxDiscount`, `logo`) VALUES
 -- Table structure for table `groups`
 --
 
-CREATE TABLE IF NOT EXISTS `groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `note` varchar(250) NOT NULL DEFAULT ' ',
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `groups`
+--
+
+TRUNCATE TABLE `groups`;
 --
 -- Dumping data for table `groups`
 --
 
-INSERT INTO `groups` (`id`, `name`, `note`, `date`, `branch_id`) VALUES
+INSERT IGNORE INTO `groups` (`id`, `name`, `note`, `date`, `branch_id`) VALUES
 (2, 'A', '', '2019-12-02 23:09:08', 1),
 (3, 'A', '', '2020-01-06 12:52:38', 7),
 (4, 'A', '', '2020-01-06 12:54:54', 3),
@@ -243,20 +271,24 @@ INSERT INTO `groups` (`id`, `name`, `note`, `date`, `branch_id`) VALUES
 -- Table structure for table `levels`
 --
 
-CREATE TABLE IF NOT EXISTS `levels` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `levels` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `note` varchar(11) DEFAULT ' ',
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `price` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `levels`
+--
+
+TRUNCATE TABLE `levels`;
 --
 -- Dumping data for table `levels`
 --
 
-INSERT INTO `levels` (`id`, `name`, `note`, `date`, `price`) VALUES
+INSERT IGNORE INTO `levels` (`id`, `name`, `note`, `date`, `price`) VALUES
 (1, 'Kids', ' ', '2019-11-30 15:37:38', 300),
 (2, 'A', ' ', '2019-11-30 15:38:56', 400),
 (4, 'B', '', '2019-11-30 17:25:19', 500),
@@ -268,20 +300,24 @@ INSERT INTO `levels` (`id`, `name`, `note`, `date`, `price`) VALUES
 -- Table structure for table `payment`
 --
 
-CREATE TABLE IF NOT EXISTS `payment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `student_id` int(11) NOT NULL,
-  `confirm` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
+  `confirm` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `payment`
+--
+
+TRUNCATE TABLE `payment`;
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `amount`, `date`, `student_id`, `confirm`) VALUES
+INSERT IGNORE INTO `payment` (`id`, `amount`, `date`, `student_id`, `confirm`) VALUES
 (5, 500, '2019-12-06 00:00:00', 18, 2),
 (7, 300, '2019-12-14 00:00:00', 20, 2),
 (8, 100, '2019-12-28 00:00:00', 20, 2),
@@ -319,18 +355,22 @@ INSERT INTO `payment` (`id`, `amount`, `date`, `student_id`, `confirm`) VALUES
 -- Table structure for table `role`
 --
 
-CREATE TABLE IF NOT EXISTS `role` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `note` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `note` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `role`
+--
+
+TRUNCATE TABLE `role`;
 --
 -- Dumping data for table `role`
 --
 
-INSERT INTO `role` (`id`, `name`, `note`) VALUES
+INSERT IGNORE INTO `role` (`id`, `name`, `note`) VALUES
 (1, 'مدير عام', ''),
 (2, 'محاسب', ''),
 (3, 'مدير الموارد البشرية', ''),
@@ -343,26 +383,30 @@ INSERT INTO `role` (`id`, `name`, `note`) VALUES
 -- Table structure for table `salary_pays`
 --
 
-CREATE TABLE IF NOT EXISTS `salary_pays` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `salary_pays` (
+  `id` int(11) NOT NULL,
   `branch_id` int(11) NOT NULL,
   `money` double NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `confirm` tinyint(4) NOT NULL,
   `month` int(11) NOT NULL,
   `year` int(11) NOT NULL,
-  `staff_number` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `staff_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `salary_pays`
+--
+
+TRUNCATE TABLE `salary_pays`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `staff`
 --
 
-CREATE TABLE IF NOT EXISTS `staff` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `staff` (
+  `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `email` varchar(200) DEFAULT NULL,
   `phone` varchar(20) NOT NULL,
@@ -375,25 +419,27 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `address` varchar(250) NOT NULL,
   `documents` varchar(200) NOT NULL,
   `img` varchar(100) NOT NULL,
-  `end_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+  `end_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `staff`
+--
+
+TRUNCATE TABLE `staff`;
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`id`, `name`, `email`, `phone`, `salary`, `role_id`, `date`, `note`, `password`, `branch_id`, `address`, `documents`, `img`, `end_date`) VALUES
+INSERT IGNORE INTO `staff` (`id`, `name`, `email`, `phone`, `salary`, `role_id`, `date`, `note`, `password`, `branch_id`, `address`, `documents`, `img`, `end_date`) VALUES
 (1, 'محمد رضا محمد', '', '07822816693', 600, 1, '2019-11-05 00:00:00', NULL, '$2a$07$gNZLR1QnLimdSYRFibKDFO2yCvQG6tjn3leuanoy96FB5g0WTOPpO', 1, 'Babil- alshawy', '', 'img/5e008735a9c86.jpg', '2029-12-13 20:45:27'),
 (2, 'علي جاسم حسن', 'moh@oxf.com', '09876544423', 600, 2, '2019-11-23 11:32:28', ' ', '$2a$07$oPXzvtwaps1X42qPztewQ.CTTFuiJeWMViBHOpr888mrY40uwHrVq', 1, 'الحلة- نادر 2', 'documents/5e18c5af677c4.jpg', 'img/5e1c7b0cf31f9.jpg', '2029-01-13 00:00:00'),
 (3, 'Zainab alwaisi', '', '009647822816693', 800, 3, '2019-11-28 16:18:52', ' ', '$2a$07$SnuTLg24eX3jscVbDx5rN.i//1ije5v.P9fnQ/PEXjPZQDysDMOJi', 1, 'حلة بابل', 'documents/5e1ad471de811.jpg', 'img/5e064b0cee732.jpg', '2029-12-13 20:45:27'),
-(4, 'جاسم غلام', 'mohammed.rbn4@yhaoo.com', '009647822816691', 870, 4, '2019-11-28 16:30:00', ' ', '$2a$07$u5iAxYtlhXqGddNfe8DDcuQpTwJBVXeJ3N8CdgN1/sfRgx4UQ1nyS', 1, 'حلة بابل', 'documents/5e1ad43b47057.jpg', 'img/5df28cfcc8cc4.jpg', '2029-12-01 00:00:00'),
 (6, 'محمد غازي سموم', 'mohammed.rbn4@yhaoo.com', '7519135964', 600, 5, '2019-12-10 14:31:50', ' ', '$2a$07$BtsLkDS5PM4TNLYVmTZfvOy09asK1dNhKJTHfAw9J6UdRWH7bQWxC', 1, 'حلة', 'documents/5e1ad463e265d.jpg', 'img/5e064c2d513bf.jpg', '2029-12-13 20:45:27'),
 (7, 'احمد حسن علي', 'ahmmed@oxf.net', '07822815593', 780, 4, '2019-12-12 21:45:12', ' ', '$2a$07$n3g5ul8i8cq5Y4noADYlweBkD02kxjQ33mYcxgCEG.bZsCAciKOcO', 1, 'بابل', 'documents/5e1ad4436c88d.jpg', 'img/5e244d0d16915.jpg', '2029-12-13 20:45:27'),
-(8, 'Mohammed Ridha', '', '07722816693', 800, 4, '2019-12-12 21:54:08', ' ', '$2a$07$mgAt8kkgeHK0ne24H8oA3.miAJYouTPpjbL/EdHUsYvDMZvujJdG2', 1, 'الكرادة', 'documents/5e1ad4515f567.jpg', 'img/5df28cd04682b.jpg', '2029-12-13 20:45:27'),
 (9, 'Mohammed Ridha', 'mohammed.rbn4@yhaoo.com', '00979722816693', 500, 5, '2020-01-10 17:38:54', ' ', '$2a$07$vHdESIY0UgggIqPuTul91uWuRVLLv9AcFvagyr8bGrjWQgeZnPDbK', 6, 'babel', 'documents/5e188c7e9bcba.jpg', 'img/5e188c7e9b948.jpg', '2021-03-18 17:38:54'),
 (10, 'وائل بكر الحسني', 'wal@oxf.org', '123456654321', 800, 4, '2020-01-12 22:51:47', ' ', '$2a$07$Wd2CKRXt8LqoP3FFvNH6rud8d3U7G74bYJ38FtSOD1ZuYbOnXaz9y', 6, 'بابل  الخسروية', 'documents/5e1b78d3bc226.jpg', 'img/5e1b78d3bbec1.jpg', '2020-01-12 22:51:47'),
-(11, 'علي كريم', '', '098765432333', 800, 2, '2020-01-13 17:12:45', ' ', '$2a$07$Fy6d5wsxdQ47B7XVxtGDWebR95rRUtdXkAeJLaKaFzWMA0ucBT0aa', 1, 'بغداد - الكرادة', 'documents/5e1c7add3ff42.jpg', 'img/5e1c7add3f74e.jpg', '2020-01-13 17:12:45'),
+(11, 'علي كريم', '', '098765432333', 800, 2, '2020-01-13 17:12:45', ' ', '$2a$07$n5ezjmopip4tzDLsyQbf6eDhDNl4GsBBdJPFqGYwo9SKCIJ1thdae', 1, 'بغداد - الكرادة', 'documents/5e1c7add3ff42.jpg', 'img/5e1c7add3f74e.jpg', '2020-01-13 00:00:00'),
 (12, 'جميل طالب', 'd@oxf.net', '1346544654668', 900, 4, '2020-01-28 20:05:52', ' ', '$2a$07$YRlmhkT0r1IwKmMtDqTyJeuoe5rdnMA57BmMUedLXbaDWgUjSa33O', 7, 'ديوانية', '_', 'img/5e3069f02f80c.jpg', '2025-06-18 00:00:00'),
 (13, 'Mohammed', 'mohammed.rbn4@yhaoo.com', '0096478228166', 800, 3, '2020-01-28 20:40:28', ' ', '$2a$07$F6oZBJ4MRAO03El2SuhbLOqsfoMutyo9e0.uaPM09Rtd/mNy2Cr/y', 1, 'hnubn', '_', '_', '2020-01-03 00:00:00');
 
@@ -403,21 +449,25 @@ INSERT INTO `staff` (`id`, `name`, `email`, `phone`, `salary`, `role_id`, `date`
 -- Table structure for table `staff_leave`
 --
 
-CREATE TABLE IF NOT EXISTS `staff_leave` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `staff_leave` (
+  `id` int(11) NOT NULL,
   `staff_id` int(11) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `with_salary` int(1) NOT NULL DEFAULT '0',
-  `confirm` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+  `confirm` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `staff_leave`
+--
+
+TRUNCATE TABLE `staff_leave`;
 --
 -- Dumping data for table `staff_leave`
 --
 
-INSERT INTO `staff_leave` (`id`, `staff_id`, `start_date`, `end_date`, `with_salary`, `confirm`) VALUES
+INSERT IGNORE INTO `staff_leave` (`id`, `staff_id`, `start_date`, `end_date`, `with_salary`, `confirm`) VALUES
 (4, 1, '2020-04-20', '2020-04-23', 2, 0),
 (5, 2, '2020-04-02', '2020-04-05', 2, 1),
 (6, 2, '2020-01-09', '2020-01-30', 2, 1);
@@ -428,8 +478,8 @@ INSERT INTO `staff_leave` (`id`, `staff_id`, `start_date`, `end_date`, `with_sal
 -- Table structure for table `students`
 --
 
-CREATE TABLE IF NOT EXISTS `students` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `gender` tinyint(1) NOT NULL,
   `birthday` date NOT NULL,
@@ -457,15 +507,19 @@ CREATE TABLE IF NOT EXISTS `students` (
   `address` varchar(250) NOT NULL DEFAULT '_',
   `discount` double NOT NULL DEFAULT '0',
   `reg_fee` double NOT NULL DEFAULT '0',
-  `extra_fee` double NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+  `extra_fee` double NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students`
+--
+
+TRUNCATE TABLE `students`;
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `name`, `gender`, `birthday`, `student_number`, `payment_type`, `level_id`, `payment_id`, `branch_id`, `date`, `update_date`, `manager_id`, `img`, `passport`, `id1`, `id2`, `id3`, `phone`, `serial`, `students_status_id`, `group_id`, `start_date`, `total_price`, `gran_name`, `gran_phone`, `address`, `discount`, `reg_fee`, `extra_fee`) VALUES
+INSERT IGNORE INTO `students` (`id`, `name`, `gender`, `birthday`, `student_number`, `payment_type`, `level_id`, `payment_id`, `branch_id`, `date`, `update_date`, `manager_id`, `img`, `passport`, `id1`, `id2`, `id3`, `phone`, `serial`, `students_status_id`, `group_id`, `start_date`, `total_price`, `gran_name`, `gran_phone`, `address`, `discount`, `reg_fee`, `extra_fee`) VALUES
 (7, 'زينب علي', 2, '2019-11-22', 'REG-OXF-BAB-0002-19', 2, 5, 0, 5, '2019-11-22 17:43:22', '2020-01-13 12:35:16', 1, 'img/5e00c346973ce.jpg', 'passport/5e19c337b76cd.jpg', 'id1/5decfaeb79bfc.jpg', '_', '_', '07822816690', 2, 1, 2, '2017-01-06 00:00:00', 100, '_', '0', '_', 0, 25, 0),
 (10, 'حسن محسن', 1, '2019-11-26', 'REG-OXF-BAB-0003-19', 2, 3, 0, 5, '2019-11-26 17:34:02', '2020-01-19 15:15:23', 1, 'img/5e00c3364fb00.jpg', 'passport/5e1c4579d8c14.jpg', 'id1/5e20726fe1600.jpg', '_', '_', '07822816693', 3, 2, 2, '2020-01-19 00:00:00', 500, '_', '0', '_', 0, 0, 50),
 (11, 'حسن محسن', 1, '2019-02-26', 'REG-OXF-BAB-0004-19', 1, 2, 0, 1, '2020-02-14 17:43:26', '2020-01-29 01:44:53', 1, 'img/5e00c32c8e86a.jpg', '_', '_', '_', '_', '07822816693', 4, 2, 5, '2020-02-29 00:00:00', 0, '_', '0', '_', 0, 0, 0),
@@ -492,8 +546,8 @@ INSERT INTO `students` (`id`, `name`, `gender`, `birthday`, `student_number`, `p
 -- Table structure for table `students_evalution`
 --
 
-CREATE TABLE IF NOT EXISTS `students_evalution` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students_evalution` (
+  `id` int(11) NOT NULL,
   `attendance` int(1) NOT NULL,
   `homework` int(11) NOT NULL,
   `grade` int(11) NOT NULL,
@@ -501,15 +555,19 @@ CREATE TABLE IF NOT EXISTS `students_evalution` (
   `lecture_date` datetime NOT NULL,
   `note` varchar(250) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `student_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students_evalution`
+--
+
+TRUNCATE TABLE `students_evalution`;
 --
 -- Dumping data for table `students_evalution`
 --
 
-INSERT INTO `students_evalution` (`id`, `attendance`, `homework`, `grade`, `lecture`, `lecture_date`, `note`, `date`, `student_id`) VALUES
+INSERT IGNORE INTO `students_evalution` (`id`, `attendance`, `homework`, `grade`, `lecture`, `lecture_date`, `note`, `date`, `student_id`) VALUES
 (5, 1, 1, 9, 7, '2020-01-22 00:00:00', '', '2020-01-23 00:38:57', 11),
 (6, 1, 2, 10, 4, '2020-01-20 00:00:00', '', '2020-01-23 00:40:27', 7),
 (7, 1, 1, 8, 4, '2020-01-20 00:00:00', '', '2020-01-23 00:40:27', 10),
@@ -535,21 +593,25 @@ INSERT INTO `students_evalution` (`id`, `attendance`, `homework`, `grade`, `lect
 -- Table structure for table `students_leave`
 --
 
-CREATE TABLE IF NOT EXISTS `students_leave` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students_leave` (
+  `id` int(11) NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `note` varchar(250) DEFAULT NULL,
-  `student_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students_leave`
+--
+
+TRUNCATE TABLE `students_leave`;
 --
 -- Dumping data for table `students_leave`
 --
 
-INSERT INTO `students_leave` (`id`, `start`, `end`, `date`, `note`, `student_id`) VALUES
+INSERT IGNORE INTO `students_leave` (`id`, `start`, `end`, `date`, `note`, `student_id`) VALUES
 (12, '2020-02-14', '2020-02-15', '2020-01-27 21:30:16', NULL, 19),
 (13, '2020-01-20', '2020-01-20', '2020-01-22 21:31:28', NULL, 10);
 
@@ -559,22 +621,26 @@ INSERT INTO `students_leave` (`id`, `start`, `end`, `date`, `note`, `student_id`
 -- Table structure for table `students_penalty`
 --
 
-CREATE TABLE IF NOT EXISTS `students_penalty` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students_penalty` (
+  `id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `type` int(1) NOT NULL COMMENT '1 suspend,2 leave, 3 others',
   `note` varchar(250) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `student_id` int(11) NOT NULL,
-  `confirm` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+  `confirm` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students_penalty`
+--
+
+TRUNCATE TABLE `students_penalty`;
 --
 -- Dumping data for table `students_penalty`
 --
 
-INSERT INTO `students_penalty` (`id`, `amount`, `type`, `note`, `date`, `student_id`, `confirm`) VALUES
+INSERT IGNORE INTO `students_penalty` (`id`, `amount`, `type`, `note`, `date`, `student_id`, `confirm`) VALUES
 (14, 50, 2, 'غرامة بسب اجازة لمدة 5', '2020-01-27 21:28:27', 11, 2),
 (15, 20, 2, 'غرامة بسب اجازة لمدة 2', '2020-01-27 21:29:55', 19, 2),
 (16, 20, 2, 'غرامة بسب اجازة لمدة 2', '2020-01-27 21:30:16', 19, 0),
@@ -586,19 +652,23 @@ INSERT INTO `students_penalty` (`id`, `amount`, `type`, `note`, `date`, `student
 -- Table structure for table `students_status`
 --
 
-CREATE TABLE IF NOT EXISTS `students_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students_status` (
+  `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `note` varchar(250) NOT NULL DEFAULT ' ',
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students_status`
+--
+
+TRUNCATE TABLE `students_status`;
 --
 -- Dumping data for table `students_status`
 --
 
-INSERT INTO `students_status` (`id`, `name`, `note`, `date`) VALUES
+INSERT IGNORE INTO `students_status` (`id`, `name`, `note`, `date`) VALUES
 (1, 'باشر', ' ', '2019-12-01 13:46:35'),
 (2, 'مؤجل', ' ', '2019-12-01 13:46:35'),
 (3, 'مفصول', ' ', '2020-01-16 15:40:36'),
@@ -611,19 +681,23 @@ INSERT INTO `students_status` (`id`, `name`, `note`, `date`) VALUES
 -- Table structure for table `students_status_tracking`
 --
 
-CREATE TABLE IF NOT EXISTS `students_status_tracking` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students_status_tracking` (
+  `id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `student_id` int(11) NOT NULL,
-  `students_status_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `students_status_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `students_status_tracking`
+--
+
+TRUNCATE TABLE `students_status_tracking`;
 --
 -- Dumping data for table `students_status_tracking`
 --
 
-INSERT INTO `students_status_tracking` (`id`, `date`, `student_id`, `students_status_id`) VALUES
+INSERT IGNORE INTO `students_status_tracking` (`id`, `date`, `student_id`, `students_status_id`) VALUES
 (1, '2020-01-28 18:58:59', 33, 1);
 
 -- --------------------------------------------------------
@@ -632,8 +706,8 @@ INSERT INTO `students_status_tracking` (`id`, `date`, `student_id`, `students_st
 -- Table structure for table `timetable`
 --
 
-CREATE TABLE IF NOT EXISTS `timetable` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `timetable` (
+  `id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `start` time NOT NULL,
@@ -641,15 +715,19 @@ CREATE TABLE IF NOT EXISTS `timetable` (
   `day` varchar(20) NOT NULL,
   `name` varchar(250) NOT NULL,
   `note` varchar(250) NOT NULL DEFAULT ' ',
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `timetable`
+--
+
+TRUNCATE TABLE `timetable`;
 --
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`id`, `teacher_id`, `group_id`, `start`, `end`, `day`, `name`, `note`, `branch_id`) VALUES
+INSERT IGNORE INTO `timetable` (`id`, `teacher_id`, `group_id`, `start`, `end`, `day`, `name`, `note`, `branch_id`) VALUES
 (1, 6, 2, '13:00:00', '14:00:00', '1', 'writing', ' ', 1),
 (4, 6, 2, '13:00:00', '14:00:00', '2', 'reading', ' ', 1),
 (5, 6, 2, '10:00:00', '11:00:00', '7', 'writing', ' ', 1),
@@ -657,6 +735,254 @@ INSERT INTO `timetable` (`id`, `teacher_id`, `group_id`, `start`, `end`, `day`, 
 (7, 6, 5, '10:00:00', '12:00:00', '4', 'reading', ' ', 1),
 (8, 9, 5, '10:00:00', '11:00:00', '1', 'reading', ' ', 1),
 (9, 9, 5, '10:00:00', '11:00:00', '2', 'reading', ' ', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `award_penalty`
+--
+ALTER TABLE `award_penalty`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `balance`
+--
+ALTER TABLE `balance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `branches`
+--
+ALTER TABLE `branches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `branch_balance`
+--
+ALTER TABLE `branch_balance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cash`
+--
+ALTER TABLE `cash`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `config`
+--
+ALTER TABLE `config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `levels`
+--
+ALTER TABLE `levels`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `salary_pays`
+--
+ALTER TABLE `salary_pays`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `staff_leave`
+--
+ALTER TABLE `staff_leave`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students_evalution`
+--
+ALTER TABLE `students_evalution`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students_leave`
+--
+ALTER TABLE `students_leave`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students_penalty`
+--
+ALTER TABLE `students_penalty`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students_status`
+--
+ALTER TABLE `students_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students_status_tracking`
+--
+ALTER TABLE `students_status_tracking`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `award_penalty`
+--
+ALTER TABLE `award_penalty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `balance`
+--
+ALTER TABLE `balance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `branches`
+--
+ALTER TABLE `branches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `branch_balance`
+--
+ALTER TABLE `branch_balance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `cash`
+--
+ALTER TABLE `cash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `config`
+--
+ALTER TABLE `config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `levels`
+--
+ALTER TABLE `levels`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `salary_pays`
+--
+ALTER TABLE `salary_pays`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `staff_leave`
+--
+ALTER TABLE `staff_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `students_evalution`
+--
+ALTER TABLE `students_evalution`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `students_leave`
+--
+ALTER TABLE `students_leave`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `students_penalty`
+--
+ALTER TABLE `students_penalty`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `students_status`
+--
+ALTER TABLE `students_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `students_status_tracking`
+--
+ALTER TABLE `students_status_tracking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
