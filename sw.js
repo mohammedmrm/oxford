@@ -1070,58 +1070,6 @@ self.__precacheManifest = [
     url: "assets/vendors/global/vendors.bundle.min.js",
     revision: "40151f207c637d2837be6747a666eb43",
   },
-  {
-    url: "assets/vendors/global/vendors.bundle.rtl.css",
-    revision: "2371f9169b64d29414f2acb33b2ea8f1",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap-grid.css",
-    revision: "59e3488e09a8bc96de5884586f3c67ec",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap-grid.min.css",
-    revision: "7aba9868c6ffadaf2c45d1bafe86d2c3",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap-reboot.css",
-    revision: "b53d1eaf9daeab26f2772281ae060120",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css",
-    revision: "220e4dc01283a9e9c5c146f984eb8934",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap.css",
-    revision: "bd551f56ce2be3eba2812e605ab4f5b2",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/bootstrap.min.css",
-    revision: "a15c2ac3234aa8f6064ef9c1f7383c37",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/css/toast.css",
-    revision: "c277b74bb7960f4a79c2fa7e6530a4f7",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/js/bootstrap.bundle.js",
-    revision: "a9247b1fe21ee409d0b37e74100de687",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js",
-    revision: "a454220fc07088bf1fdd19313b6bfd50",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/js/bootstrap.js",
-    revision: "7f827fe484ec04346553202782b0664b",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/js/bootstrap.min.js",
-    revision: "e1d98d47689e00f8ecbc5d9f61bdb42e",
-  },
-  {
-    url: "bootstrap-4.3.1-dist/js/jquery-3.2.1.min.js",
-    revision: "c9f5aeeca3ad37bf2aa006139b935f0a",
-  },
   { url: "Cairo.ttf", revision: "0387a0b8b59d6b26cb736ec76d5045b0" },
   {
     url: "Cairofont.woff2",
