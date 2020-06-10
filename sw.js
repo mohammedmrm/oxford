@@ -122,10 +122,6 @@ self.__precacheManifest = [
     revision: "87c56f81355eb5393263a10c471d8924",
   },
   {
-    url: "/?page=pages/balance.php",
-    revision: "87c56f81355eb5393263a10c471d8925",
-  },
-  {
     url: "/?page=pages/installment.php",
     revision: "87c56f81355eb5393263a10c471d8926",
   },
