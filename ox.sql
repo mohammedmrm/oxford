@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 05:03 PM
+-- Generation Time: Jun 09, 2020 at 06:09 PM
 -- Server version: 5.7.20
 -- PHP Version: 7.1.11
 
@@ -41,15 +41,10 @@ CREATE TABLE `award_penalty` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `award_penalty`
---
-
-TRUNCATE TABLE `award_penalty`;
---
 -- Dumping data for table `award_penalty`
 --
 
-INSERT IGNORE INTO `award_penalty` (`id`, `amount`, `staff_id`, `status`, `type`, `year`, `month`, `date`, `note`) VALUES
+INSERT INTO `award_penalty` (`id`, `amount`, `staff_id`, `status`, `type`, `year`, `month`, `date`, `note`) VALUES
 (9, 120, 1, NULL, 1, 2020, 1, '2020-01-26 17:49:59', 'Good work'),
 (10, 50, 2, NULL, 1, 2020, 1, '2020-01-26 17:50:42', 'bad'),
 (11, 50, 4, NULL, 2, 2020, 1, '2020-01-31 17:00:46', 'delay');
@@ -72,15 +67,10 @@ CREATE TABLE `balance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `balance`
---
-
-TRUNCATE TABLE `balance`;
---
 -- Dumping data for table `balance`
 --
 
-INSERT IGNORE INTO `balance` (`id`, `date`, `balance`, `status`, `money`, `branch_id`, `reason`, `note`) VALUES
+INSERT INTO `balance` (`id`, `date`, `balance`, `status`, `money`, `branch_id`, `reason`, `note`) VALUES
 (1, '2020-01-05 20:54:54', 500, 1, 500, 1, 'قسط الطالب - REG-OXF-BAB-0005-19', 'تسديد قسط دراسي'),
 (2, '2020-01-05 21:03:48', 800, 1, 300, 1, 'قسط الطالب )REG-OXF-BAB-0007-19(', 'تسديد قسط دراسي'),
 (3, '2019-12-05 22:10:34', 900, 1, 100, 1, 'قسط الطالب )REG-OXF-BAB-0007-19(', 'تسديد قسط دراسي'),
@@ -138,15 +128,10 @@ CREATE TABLE `branches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `branches`
---
-
-TRUNCATE TABLE `branches`;
---
 -- Dumping data for table `branches`
 --
 
-INSERT IGNORE INTO `branches` (`id`, `serial`, `date`, `note`, `name`, `email`, `phone`) VALUES
+INSERT INTO `branches` (`id`, `serial`, `date`, `note`, `name`, `email`, `phone`) VALUES
 (1, 'BAG', '2019-11-30 15:32:25', '', 'فرع بغداد', 'bag@oxf.com', '07822816693'),
 (5, 'NAJ', '2019-12-18 18:02:57', '', 'فرع النجف', 'Najaf@oxf.com', '07822816693'),
 (6, 'BAB', '2020-01-12 22:49:34', '', 'فرع الحلة', 'bab@oxf.org', '09876543211'),
@@ -170,15 +155,10 @@ CREATE TABLE `branch_balance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `branch_balance`
---
-
-TRUNCATE TABLE `branch_balance`;
---
 -- Dumping data for table `branch_balance`
 --
 
-INSERT IGNORE INTO `branch_balance` (`id`, `date`, `balance`, `status`, `money`, `reason`, `note`, `branch_id`) VALUES
+INSERT INTO `branch_balance` (`id`, `date`, `balance`, `status`, `money`, `reason`, `note`, `branch_id`) VALUES
 (3, '2020-01-13 17:50:42', 500, 1, 500, NULL, '', 1),
 (4, '2020-02-13 17:52:12', 400, 0, 100, 'Stuff', '', 1),
 (5, '2020-01-13 17:55:39', 350, 0, 50, 'Award', '', 1),
@@ -200,15 +180,10 @@ CREATE TABLE `cash` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `cash`
---
-
-TRUNCATE TABLE `cash`;
---
 -- Dumping data for table `cash`
 --
 
-INSERT IGNORE INTO `cash` (`id`, `branch_id`, `money`, `date`, `confirm`, `note`) VALUES
+INSERT INTO `cash` (`id`, `branch_id`, `money`, `date`, `confirm`, `note`) VALUES
 (23, 1, 500, '2020-01-13 17:49:32', 2, '');
 
 -- --------------------------------------------------------
@@ -224,15 +199,10 @@ CREATE TABLE `config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `config`
---
-
-TRUNCATE TABLE `config`;
---
 -- Dumping data for table `config`
 --
 
-INSERT IGNORE INTO `config` (`id`, `maxDiscount`, `logo`) VALUES
+INSERT INTO `config` (`id`, `maxDiscount`, `logo`) VALUES
 (1, 100, 'logos/logo.png');
 
 -- --------------------------------------------------------
@@ -250,15 +220,10 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `groups`
---
-
-TRUNCATE TABLE `groups`;
---
 -- Dumping data for table `groups`
 --
 
-INSERT IGNORE INTO `groups` (`id`, `name`, `note`, `date`, `branch_id`) VALUES
+INSERT INTO `groups` (`id`, `name`, `note`, `date`, `branch_id`) VALUES
 (2, 'A', '', '2019-12-02 23:09:08', 1),
 (3, 'A', '', '2020-01-06 12:52:38', 7),
 (4, 'A', '', '2020-01-06 12:54:54', 3),
@@ -280,15 +245,10 @@ CREATE TABLE `levels` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `levels`
---
-
-TRUNCATE TABLE `levels`;
---
 -- Dumping data for table `levels`
 --
 
-INSERT IGNORE INTO `levels` (`id`, `name`, `note`, `date`, `price`) VALUES
+INSERT INTO `levels` (`id`, `name`, `note`, `date`, `price`) VALUES
 (1, 'Kids', ' ', '2019-11-30 15:37:38', 300),
 (2, 'A', ' ', '2019-11-30 15:38:56', 400),
 (4, 'B', '', '2019-11-30 17:25:19', 500),
@@ -309,15 +269,10 @@ CREATE TABLE `payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `payment`
---
-
-TRUNCATE TABLE `payment`;
---
 -- Dumping data for table `payment`
 --
 
-INSERT IGNORE INTO `payment` (`id`, `amount`, `date`, `student_id`, `confirm`) VALUES
+INSERT INTO `payment` (`id`, `amount`, `date`, `student_id`, `confirm`) VALUES
 (5, 500, '2019-12-06 00:00:00', 18, 2),
 (7, 300, '2019-12-14 00:00:00', 20, 2),
 (8, 100, '2019-12-28 00:00:00', 20, 2),
@@ -362,15 +317,10 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `role`
---
-
-TRUNCATE TABLE `role`;
---
 -- Dumping data for table `role`
 --
 
-INSERT IGNORE INTO `role` (`id`, `name`, `note`) VALUES
+INSERT INTO `role` (`id`, `name`, `note`) VALUES
 (1, 'مدير عام', ''),
 (2, 'محاسب', ''),
 (3, 'مدير الموارد البشرية', ''),
@@ -394,11 +344,6 @@ CREATE TABLE `salary_pays` (
   `staff_number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `salary_pays`
---
-
-TRUNCATE TABLE `salary_pays`;
 -- --------------------------------------------------------
 
 --
@@ -423,15 +368,10 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `staff`
---
-
-TRUNCATE TABLE `staff`;
---
 -- Dumping data for table `staff`
 --
 
-INSERT IGNORE INTO `staff` (`id`, `name`, `email`, `phone`, `salary`, `role_id`, `date`, `note`, `password`, `branch_id`, `address`, `documents`, `img`, `end_date`) VALUES
+INSERT INTO `staff` (`id`, `name`, `email`, `phone`, `salary`, `role_id`, `date`, `note`, `password`, `branch_id`, `address`, `documents`, `img`, `end_date`) VALUES
 (1, 'محمد رضا محمد', '', '07822816693', 600, 1, '2019-11-05 00:00:00', NULL, '$2a$07$gNZLR1QnLimdSYRFibKDFO2yCvQG6tjn3leuanoy96FB5g0WTOPpO', 1, 'Babil- alshawy', '', 'img/5e008735a9c86.jpg', '2029-12-13 20:45:27'),
 (2, 'علي جاسم حسن', 'moh@oxf.com', '09876544423', 600, 2, '2019-11-23 11:32:28', ' ', '$2a$07$oPXzvtwaps1X42qPztewQ.CTTFuiJeWMViBHOpr888mrY40uwHrVq', 1, 'الحلة- نادر 2', 'documents/5e18c5af677c4.jpg', 'img/5e1c7b0cf31f9.jpg', '2029-01-13 00:00:00'),
 (3, 'Zainab alwaisi', '', '009647822816693', 800, 3, '2019-11-28 16:18:52', ' ', '$2a$07$SnuTLg24eX3jscVbDx5rN.i//1ije5v.P9fnQ/PEXjPZQDysDMOJi', 1, 'حلة بابل', 'documents/5e1ad471de811.jpg', 'img/5e064b0cee732.jpg', '2029-12-13 20:45:27'),
@@ -459,15 +399,10 @@ CREATE TABLE `staff_leave` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `staff_leave`
---
-
-TRUNCATE TABLE `staff_leave`;
---
 -- Dumping data for table `staff_leave`
 --
 
-INSERT IGNORE INTO `staff_leave` (`id`, `staff_id`, `start_date`, `end_date`, `with_salary`, `confirm`) VALUES
+INSERT INTO `staff_leave` (`id`, `staff_id`, `start_date`, `end_date`, `with_salary`, `confirm`) VALUES
 (4, 1, '2020-04-20', '2020-04-23', 2, 0),
 (5, 2, '2020-04-02', '2020-04-05', 2, 1),
 (6, 2, '2020-01-09', '2020-01-30', 2, 1);
@@ -511,15 +446,10 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students`
---
-
-TRUNCATE TABLE `students`;
---
 -- Dumping data for table `students`
 --
 
-INSERT IGNORE INTO `students` (`id`, `name`, `gender`, `birthday`, `student_number`, `payment_type`, `level_id`, `payment_id`, `branch_id`, `date`, `update_date`, `manager_id`, `img`, `passport`, `id1`, `id2`, `id3`, `phone`, `serial`, `students_status_id`, `group_id`, `start_date`, `total_price`, `gran_name`, `gran_phone`, `address`, `discount`, `reg_fee`, `extra_fee`) VALUES
+INSERT INTO `students` (`id`, `name`, `gender`, `birthday`, `student_number`, `payment_type`, `level_id`, `payment_id`, `branch_id`, `date`, `update_date`, `manager_id`, `img`, `passport`, `id1`, `id2`, `id3`, `phone`, `serial`, `students_status_id`, `group_id`, `start_date`, `total_price`, `gran_name`, `gran_phone`, `address`, `discount`, `reg_fee`, `extra_fee`) VALUES
 (7, 'زينب علي', 2, '2019-11-22', 'REG-OXF-BAB-0002-19', 2, 5, 0, 5, '2019-11-22 17:43:22', '2020-01-13 12:35:16', 1, 'img/5e00c346973ce.jpg', 'passport/5e19c337b76cd.jpg', 'id1/5decfaeb79bfc.jpg', '_', '_', '07822816690', 2, 1, 2, '2017-01-06 00:00:00', 100, '_', '0', '_', 0, 25, 0),
 (10, 'حسن محسن', 1, '2019-11-26', 'REG-OXF-BAB-0003-19', 2, 3, 0, 5, '2019-11-26 17:34:02', '2020-01-19 15:15:23', 1, 'img/5e00c3364fb00.jpg', 'passport/5e1c4579d8c14.jpg', 'id1/5e20726fe1600.jpg', '_', '_', '07822816693', 3, 2, 2, '2020-01-19 00:00:00', 500, '_', '0', '_', 0, 0, 50),
 (11, 'حسن محسن', 1, '2019-02-26', 'REG-OXF-BAB-0004-19', 1, 2, 0, 1, '2020-02-14 17:43:26', '2020-01-29 01:44:53', 1, 'img/5e00c32c8e86a.jpg', '_', '_', '_', '_', '07822816693', 4, 2, 5, '2020-02-29 00:00:00', 0, '_', '0', '_', 0, 0, 0),
@@ -559,15 +489,10 @@ CREATE TABLE `students_evalution` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students_evalution`
---
-
-TRUNCATE TABLE `students_evalution`;
---
 -- Dumping data for table `students_evalution`
 --
 
-INSERT IGNORE INTO `students_evalution` (`id`, `attendance`, `homework`, `grade`, `lecture`, `lecture_date`, `note`, `date`, `student_id`) VALUES
+INSERT INTO `students_evalution` (`id`, `attendance`, `homework`, `grade`, `lecture`, `lecture_date`, `note`, `date`, `student_id`) VALUES
 (5, 1, 1, 9, 7, '2020-01-22 00:00:00', '', '2020-01-23 00:38:57', 11),
 (6, 1, 2, 10, 4, '2020-01-20 00:00:00', '', '2020-01-23 00:40:27', 7),
 (7, 1, 1, 8, 4, '2020-01-20 00:00:00', '', '2020-01-23 00:40:27', 10),
@@ -603,15 +528,10 @@ CREATE TABLE `students_leave` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students_leave`
---
-
-TRUNCATE TABLE `students_leave`;
---
 -- Dumping data for table `students_leave`
 --
 
-INSERT IGNORE INTO `students_leave` (`id`, `start`, `end`, `date`, `note`, `student_id`) VALUES
+INSERT INTO `students_leave` (`id`, `start`, `end`, `date`, `note`, `student_id`) VALUES
 (12, '2020-02-14', '2020-02-15', '2020-01-27 21:30:16', NULL, 19),
 (13, '2020-01-20', '2020-01-20', '2020-01-22 21:31:28', NULL, 10);
 
@@ -632,15 +552,10 @@ CREATE TABLE `students_penalty` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students_penalty`
---
-
-TRUNCATE TABLE `students_penalty`;
---
 -- Dumping data for table `students_penalty`
 --
 
-INSERT IGNORE INTO `students_penalty` (`id`, `amount`, `type`, `note`, `date`, `student_id`, `confirm`) VALUES
+INSERT INTO `students_penalty` (`id`, `amount`, `type`, `note`, `date`, `student_id`, `confirm`) VALUES
 (14, 50, 2, 'غرامة بسب اجازة لمدة 5', '2020-01-27 21:28:27', 11, 2),
 (15, 20, 2, 'غرامة بسب اجازة لمدة 2', '2020-01-27 21:29:55', 19, 2),
 (16, 20, 2, 'غرامة بسب اجازة لمدة 2', '2020-01-27 21:30:16', 19, 0),
@@ -660,15 +575,10 @@ CREATE TABLE `students_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students_status`
---
-
-TRUNCATE TABLE `students_status`;
---
 -- Dumping data for table `students_status`
 --
 
-INSERT IGNORE INTO `students_status` (`id`, `name`, `note`, `date`) VALUES
+INSERT INTO `students_status` (`id`, `name`, `note`, `date`) VALUES
 (1, 'باشر', ' ', '2019-12-01 13:46:35'),
 (2, 'مؤجل', ' ', '2019-12-01 13:46:35'),
 (3, 'مفصول', ' ', '2020-01-16 15:40:36'),
@@ -689,15 +599,10 @@ CREATE TABLE `students_status_tracking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `students_status_tracking`
---
-
-TRUNCATE TABLE `students_status_tracking`;
---
 -- Dumping data for table `students_status_tracking`
 --
 
-INSERT IGNORE INTO `students_status_tracking` (`id`, `date`, `student_id`, `students_status_id`) VALUES
+INSERT INTO `students_status_tracking` (`id`, `date`, `student_id`, `students_status_id`) VALUES
 (1, '2020-01-28 18:58:59', 33, 1);
 
 -- --------------------------------------------------------
@@ -719,15 +624,10 @@ CREATE TABLE `timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Truncate table before insert `timetable`
---
-
-TRUNCATE TABLE `timetable`;
---
 -- Dumping data for table `timetable`
 --
 
-INSERT IGNORE INTO `timetable` (`id`, `teacher_id`, `group_id`, `start`, `end`, `day`, `name`, `note`, `branch_id`) VALUES
+INSERT INTO `timetable` (`id`, `teacher_id`, `group_id`, `start`, `end`, `day`, `name`, `note`, `branch_id`) VALUES
 (1, 6, 2, '13:00:00', '14:00:00', '1', 'writing', ' ', 1),
 (4, 6, 2, '13:00:00', '14:00:00', '2', 'reading', ' ', 1),
 (5, 6, 2, '10:00:00', '11:00:00', '7', 'writing', ' ', 1),
