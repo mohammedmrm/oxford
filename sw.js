@@ -66,6 +66,78 @@ self.__precacheManifest = [
     revision: "87c56f81355eb5393263a10c471d8929",
   },
   {
+    url: "?page=pages/numbers.php",
+    revision: "87c56f81355eb5393263a10c471d8911",
+  },
+  {
+    url: "?page=pages/accounter.php",
+    revision: "87c56f81355eb5393263a10c471d8912",
+  },
+  {
+    url: "?page=pages/hrManager.php",
+    revision: "87c56f81355eb5393263a10c471d8913",
+  },
+  {
+    url: "?page=pages/branchManger.php",
+    revision: "87c56f81355eb5393263a10c471d8914",
+  },
+  {
+    url: "?page=pages/branches.php",
+    revision: "87c56f81355eb5393263a10c471d8915",
+  },
+  {
+    url: "?page=pages/levels.php",
+    revision: "87c56f81355eb5393263a10c471d8916",
+  },
+  {
+    url: "?page=pages/leave.php",
+    revision: "87c56f81355eb5393263a10c471d8917",
+  },
+  {
+    url: "?page=pages/students.php",
+    revision: "87c56f81355eb5393263a10c471d8918",
+  },
+  {
+    url: "?page=pages/studentLeave.php",
+    revision: "87c56f81355eb5393263a10c471d8919",
+  },
+  {
+    url: "?page=pages/showStudentLeave.php",
+    revision: "87c56f81355eb5393263a10c471d8920",
+  },
+  {
+    url: "?page=pages/studentPenalty.php",
+    revision: "87c56f81355eb5393263a10c471d8921",
+  },
+  {
+    url: "?page=pages/salary.php",
+    revision: "87c56f81355eb5393263a10c471d8922",
+  },
+  {
+    url: "?page=pages/balance.php",
+    revision: "87c56f81355eb5393263a10c471d8923",
+  },
+  {
+    url: "?page=pages/cash.php",
+    revision: "87c56f81355eb5393263a10c471d8924",
+  },
+  {
+    url: "?page=pages/balance.php",
+    revision: "87c56f81355eb5393263a10c471d8925",
+  },
+  {
+    url: "?page=pages/installment.php",
+    revision: "87c56f81355eb5393263a10c471d8926",
+  },
+  {
+    url: "?page=pages/moneyout.php",
+    revision: "87c56f81355eb5393263a10c471d8927",
+  },
+  {
+    url: "?page=pages/award.php",
+    revision: "87c56f81355eb5393263a10c471d8928",
+  },
+  {
     url: "assets/css/demo1/pages/blog/grid-v2.css",
     revision: "765031d1a53f937f67c264f72de16cea",
   },
