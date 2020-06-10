@@ -4,7 +4,7 @@ error_reporting(0);
 session_start();
 
 require_once("_access.php");
-access([1,4]);
+access([1,4,3]);
 require_once("dbconnection.php");
 
 use Violin\Violin;

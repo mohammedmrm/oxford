@@ -880,7 +880,7 @@ function PayBtnStatus(){
 ///--- انشاء رقم تسلسلي للطالب
 function getStudentNumber1(){
   $.ajax({
-    url:"script/_studentNumberBuilder.php",
+    url:"script/_studentnumberBuilder.php",
     type:"POST",
     beforeSend:function(){
 
