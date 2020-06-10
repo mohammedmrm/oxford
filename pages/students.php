@@ -154,15 +154,17 @@ $.ajax({
   data:$("#filtterStudentsForm").serialize(),
   beforeSend:function(){
     $("#pagination").html("");
+    $("#tb-student").addClass("loading");
   },
   success:function(res){
+
   if(res.role != 1 && res.role != 3){
     $("#branch").attr("disabled",true);
   }else{
     $("#branch").attr("disabled",false);
   }
-    $("#branch").selectpicker("refresh");
-   console.log(res);
+   $("#branch").selectpicker("refresh");
+   $("#tb-student").removeClass("loading");
    $("#tb-student").DataTable().destroy();
    $("#studentesTable").html("");
    $("#studentesTable").html("");
@@ -293,9 +295,10 @@ $.ajax({
        "bLengthChange": false,
        "bFilter": false,
        serverPaging: true
-});
+  });
     },
    error:function(e){
+    $("#tb-student").removeClass("loading");
     console.log(e);
   }
 });
