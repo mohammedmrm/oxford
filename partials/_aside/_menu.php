@@ -65,7 +65,7 @@ $a = $_SESSION['user_details']['role_id'];
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="?page=pages/branches.php" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">الافرع</span></a></li>
                                 <?php }?>
                                 <?php if($a == 4 ||  $a==99){?>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="?page=pages/timeTable.php" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">الجدول الاسبوعي</span></a></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="?page=pages/timetable.php" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">الجدول الاسبوعي</span></a></li>
                                 <?php }?>
                                 <?php if($a == 4 ||  $a==99){?>
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="?page=pages/groups.php" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">المجموعات</span></a></li>
