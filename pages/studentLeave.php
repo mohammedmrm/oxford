@@ -223,7 +223,7 @@ $.ajax({
             '<td>'+
               '<img class="user-img" src="img/student/'+this.img+'"/>'+
             '</td>'+
-            '<td width="200px"><a href="?page=pages/showStudentLeave.php&reg='+this.student_number+'" target="_blank" title="استمارة التسجيل">'+this.student_number+'</a></td>'+
+            '<td width="200px"><a href="?page=pages/showStudentLeave.php&reg='+this.student_number+'" title="استمارة التسجيل">'+this.student_number+'</a></td>'+
             '<td><a target="_blank" href="contract.php?id='+this.id+'" target="_blank">'+this.name+'</a></td>'+
             '<td>'+this.phone+'</td>'+
             '<td>'+this.start_date+'</td>'+

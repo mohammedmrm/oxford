@@ -89,18 +89,18 @@ $.ajax({
     $("#s_name").text('لايوجد اجازات');
    }
    $.each(res.data,function(){
-     btns="<td></td>";
+     btns="";
      if(res.role == 4){
-        btns =   '<td>'+
-                   '<button type="button" class="btn btn-link btn-clean text-danger" onclick="deleteStudentLeave('+this.l_id+')" data-toggle="modal" data-target="#deleteLeaveModal"><span class="flaticon-delete"></sapn></button>'+
-                 '</td>';
+        btns += '<button type="button" class="btn btn-link btn-clean text-danger" onclick="deleteStudentLeave('+this.l_id+')" data-toggle="modal" data-target="#deleteLeaveModal"><span class="flaticon-delete"></sapn></button>'
+                 ;
      }
+     btns += btns = '<button type="button" class="btn btn-link btn-clean text-danger" onclick="showStudentLeave('+this.l_id+')" data-toggle="modal" data-target="#showLeaveModal"><span class="flaticon-list"></sapn></button>';
      $("#LeaveTable").append(
        '<tr>'+
             '<td>'+this.start_date+'</td>'+
             '<td>'+this.end_date+'</td>'+
             '<td>'+this.note+'</td>'+
-            btns+
+            '<td>'+btns+'</td>'+
         '</tr>');
      });
      $("#tb-Leave").DataTable().destroy();
@@ -147,5 +147,28 @@ function deleteStudentLeave(id){
       });
   }
 }
-
+function frameLoaded(){
+  $('#receiptIframe').parent().removeClass('loading');
+}
+function showStudentLeave(id){
+ $('#receiptIframe').parent().addClass('loading');
+ $('#receiptIframe').attr('src','script/showStudenLeave.php?id='+id);
+}
 </script>
+<div class="modal fade" id="showLeaveModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title">اجازة الطالب</h4>
+        </div>
+        <div class="modal-body">
+		<!--begin::Portlet-->
+          <iframe id='receiptIframe' src="" onload="frameLoaded()" width="100%" height="600px"></iframe>
+        <!--end::Portlet-->
+        </div>
+      </div>
+
+    </div>
+  </div>
