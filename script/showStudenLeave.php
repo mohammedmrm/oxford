@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 require_once("_access.php");
-access([1,2,3,5]);
+access([1,2,3,4,5,6]);
 require_once("dbconnection.php");
 $style= <<<EOF
 <style>
