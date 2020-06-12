@@ -407,6 +407,16 @@ getStudents();
 								<span class="form-text text-danger" id="err_id3"></span>
 							</div>
 							<div class="form-group">
+								<label>التحصيل الدراسي:</label>
+								<input class="form-control" type="text"  name="cer">
+								<span class="form-text text-danger" id="err_cer"></span>
+							</div>
+							<div class="form-group">
+								<label>اللغات التي يتكلمها الطالب:</label>
+								<input class="form-control" type="text"  name="lngs">
+								<span class="form-text text-danger" id="err_lngs"></span>
+							</div>
+							<div class="form-group">
 								<label>المستوى الدراسي:</label>
                                 <select class="form-control" id="level" name="level">
         							<option>-- اختر المستوى --</option>
@@ -742,6 +752,8 @@ function addStudent1(){
      $("#err_id1").text("");
      $("#err_address").text("");
      $("#err_gran_name").text("");
+     $("#err_cer").text("");
+     $("#err_lngs").text("");
      $("#err_gran_phone").text("");
      $("#err_reg_fee").text("");
      $("#err_discount").text("");
@@ -773,6 +785,8 @@ function addStudent1(){
          $("#err_id3").text(res.error.id3);
          $("#err_address").text(res.error.address);
          $("#err_gran_name").text(res.error.gran_name);
+         $("#err_lngs").text(res.error.lngs);
+         $("#err_cer").text(res.error.cer);
          $("#err_gran_phone").text(res.error.gran_phone);
          $("#err_reg_fee").text(res.error.reg_fee);
          $("#err_discount").text(res.error.discount);

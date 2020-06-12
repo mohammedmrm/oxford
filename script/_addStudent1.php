@@ -28,6 +28,8 @@ $reg_fee  = $_REQUEST['reg_fee'];
 $address  = $_REQUEST['address'];
 $gran_name  = $_REQUEST['gran_name'];
 $gran_phone  = $_REQUEST['gran_phone'];
+$lngs  = $_REQUEST['lngs'];
+$cer  = $_REQUEST['cer'];
 $discount  = $_REQUEST['discount'];
 
 $img = $_FILES['img'];
@@ -95,6 +97,8 @@ $v->validate([
     'address' => [$address,  'required|max(250)'],
     'gran_name' => [$gran_name,    'required|max(200)'],
     'gran_phone' => [$gran_phone,    'required|isPhoneNumber'],
+    'lngs' => [$lngs,    'max(250)'],
+    'cer' => [$cer,    'max(250)'],
     'reg_fee' => [$reg_fee,    'required|isPrice'],
     'discount' => [$discount,    'isPrice'],
 ]);
@@ -198,11 +202,11 @@ if($v->passes() && $disscont_err=="" && $img_err == "" && $passport_err == "" &&
   }
 
   $sql = 'insert into students (address,reg_fee,gran_name,gran_phone,discount,total_price,level_id,manager_id,branch_id,name,phone,gender,birthday,payment_type,
-                             student_number,serial,img,passport,id1,id2,id3,extra_fee,group_id) values
-                             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+                             student_number,serial,img,passport,id1,id2,id3,extra_fee,group_id,lngs,cer) values
+                             (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
   $result = setData($con,$sql,[$address,$reg_fee,$gran_name,$gran_phone,$discount,$levelprice[0]['price'],$level,$_SESSION['userid'],$_SESSION['user_details']['branch_id'],$name,$phone,$gender,$birthday,$payment_type,
                                $student_number,$serial,$imgPath,
-                               $passportPath,$id1Path,$id2Path,$id3Path,$extra_fee,$group]);
+                               $passportPath,$id1Path,$id2Path,$id3Path,$extra_fee,$group,$lngs,$cer]);
   if($result > 0){
     $success = 1;
     if($payment_type == 2){
@@ -235,6 +239,8 @@ if($v->passes() && $disscont_err=="" && $img_err == "" && $passport_err == "" &&
            'address'=>implode($v->errors()->get('address')),
            'gran_name'=>implode($v->errors()->get('gran_name')),
            'gran_phone'=>implode($v->errors()->get('gran_phone')),
+           'lngs'=>implode($v->errors()->get('lngs')),
+           'cer'=>implode($v->errors()->get('cer')),
            'reg_fee'=>implode($v->errors()->get('reg_fee')),
            'discount'=>$disscont_err,
            'img'=>$img_err,

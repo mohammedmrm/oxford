@@ -217,13 +217,13 @@ ul li {
         <label class="cell"><?php echo $student['birthday']?></label><br />
 
         <label>Gender (الجنس)</label>
-        <label class="cell"><?php if($student['gender'] == 1){echo "✓ Male";}else {echo "✓ Female";}?></label><br />
+        <label class="cell"><?php if($student['gender'] == 1){echo "✓ ذكر";}else {echo "✓ انثى";}?></label><br />
 
         <label>Grade (التحصيل الدراسي):</label>
-        <label class="cell"><?php echo "N/A";?></label><br />
+        <label class="cell"><?php echo $student['cer'];?></label><br />
 
         <label>Spoken Languges (اللغات التي تتكلمها):</label>
-        <label class="cell"><?php echo "N/A";?></label><br />
+        <label class="cell"><?php echo $student['lngs'];?></label><br />
         <hr />
         <span>Parent's Information معلومات الابوين</span>
         <table class="table" align="left" width="100%" border="1" >
