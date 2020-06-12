@@ -1,4 +1,10 @@
-<!-- begin:: Content -->
+<?php
+if(empty($_GET['reg'])){
+  $reg = $_GET['reg'];
+}else{
+   $reg="";
+}
+?><!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 <div class="kt-portlet kt-portlet--mobile">
 	<div class="kt-portlet__head">
@@ -17,7 +23,7 @@
           <div class="row kt-margin-b-20">
             <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
             	<label>الرقم التسلسلي للطالب:</label>
-            	<input type="text" class="form-control" id="student_number" name="students_number" />
+            	<input type="text" class="form-control" value="<?php echo $reg;?>" id="student_number" name="students_number" />
             </div>
             <div class="col-lg-2 kt-margin-b-10-tablet-and-mobile">
             	<label>بحث:</label><br />
@@ -115,7 +121,7 @@ $.ajax({
 });
 }
 
-
+getStudentLeave();
 </script>
 <script>
 
