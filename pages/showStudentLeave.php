@@ -1,5 +1,5 @@
 <?php
-if(empty($_GET['reg'])){
+if(!empty($_GET['reg'])){
   $reg = $_GET['reg'];
 }else{
    $reg="";
