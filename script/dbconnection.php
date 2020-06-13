@@ -20,6 +20,12 @@ function setData($db,$query,$parm = []) {
   $count = $stmt->rowCount();
   return $count;
 }
+function setDataWithLastID($db,$query,$parm = []) {
+  $stmt = $db->prepare($query);
+  $stmt->execute($parm);
+  $rows = $db->lastInsertId();
+  return $rows;
+}
 function validateDate($date, $format = 'Y-m-d')
 {
     $d = DateTime::createFromFormat($format, $date);

@@ -91,8 +91,9 @@ if($v->passes() && $end_err == "" && $start_err == "") {
           if($result > 0){
             $success = 1;
             $sql = 'insert into students_penalty (student_id,amount,type,note) values(?,?,?,?)';
-            $result2=setData($con,$sql,[$id,$penalty,2,'غرامة بسب اجازة لمدة '.$date_diff.' يوم']);
-
+            $result2=setDataWithLastID($con,$sql,[$id,$penalty,2,'غرامة بسب اجازة لمدة '.$date_diff.' يوم']);
+            $sql = "update students_leave set penalty_id=? where student_id=? and start= ?  order by id DESC limit 1";
+            setData($con,$sql,[$result2,$id,$start]);
             $msg = "تم اضافة الاجازة";
           }
         }else{

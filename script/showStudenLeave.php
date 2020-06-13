@@ -35,8 +35,13 @@ $id = $_REQUEST['id'];
 
 
 try{
-  $query = "select *,date_format(students_leave.date,'%Y-%m-%d') as date from students_leave
-            left join students on students.id = students_leave.student_id";
+  $query = "select *,date_format(students_leave.date,'%Y-%m-%d') as date,
+            (DATEDIFF(end,start)+1) as days
+            from students_leave
+            left join students on students.id = students_leave.student_id
+            left join students_penalty on students_penalty.id = students_leave.penalty_id
+            where students_leave.id=?
+            ";
 
   $data = getData($con,$query,[$id]);
   $data = $data[0];
@@ -100,24 +105,32 @@ $pdf->AddPage('P', 'A5');
 // Persian and English content
 $tbl = '
 <table  cellpadding="10">
-
   <tr>
-    <td>رقم الاجازة : '.$data['id'].'</td>
-    <td>تاريخ : '.$data['date'].'</td>
+    <td width="80">رقم الاجازة : </td><td width="100" >'.$data['id'].'</td>
+    <td width="100">تاريخ : </td><td width="100" >'.$data['date'].'</td>
   </tr>
   <tr>
-    <td colspan="2">اسم الطالب: '.$data['name'].'</td>
+    <td width="80">اسم الطالب:     </td><td width="100" sytle="color:#990000">'.$data['name'].'</td>
+    <td width="100">الرقم التسلسلي:</td><td width="200" sytle="color:#990000">'.$data['student_number'].'</td>
   </tr>
 </table>
 <br /><br /><br />
 <table  border="1" cellpadding="10">
-    <tr>
+  <tr>
     <td width="153" class="title">من تاريخ</td>
     <td align="center" width="300">'.$data['start'].'</td>
   </tr>
   <tr>
     <td width="153" class="title">الى تاريخ</td>
     <td align="center" width="300">'.$data['end'].'</td>
+  </tr>
+  <tr>
+    <td width="153" class="title">المدة</td>
+    <td align="center" width="300">'.$data['days'].'</td>
+  </tr>
+  <tr>
+    <td width="153" class="title">الغرامة</td>
+    <td align="center" width="300">$'.$data['amount'].'</td>
   </tr>
 </table>
 <br /><br />
@@ -127,10 +140,9 @@ $comp = "
 <span>المعهد مسجل قانونياً,</span>
 <br /> <br />
 <span>معهد اكسفور للغات والتطوير</span>
-<span>078-780-0898 / 077-789-8898</span>
+<span>0781-226-5040 / 0770-331-59-84</span>
 <br />
-<span></span>
-<br /><br />
+<br />
 <span>
 مؤسسة اكسفورد التعليميه المتمثلة بالدكتور احمد الرماحي او من ينوب عنه <br />
 التاريخ :".$data['date']."<br />
@@ -138,45 +150,21 @@ $comp = "
 </span>
 ";
 
-
+$pdf->SetFont('aealarabiya', '', 12);
 $pdf->writeHTML($style.$tbl, true, false, false, false, '');
-$htmlpersian = $hcontent;
-//$pdf->cell('','','توقيع العميل','');
+$pdf->cell('','','توقيع المدير','');
 $pdf->Ln();
 $pdf->SetFont('aealarabiya', '', 10);
-//$pdf->writeHTML($style.$comp, true, false, false, false, '');
-// set LTR direction for english translation
 $pdf->setRTL(true);
 
-$pdf->SetFontSize(10);
-// print newline
-$style = array(
-    'position' => 'L',
-    'align' => 'L',
-    'stretch' => false,
-    'fitwidth' => false,
-    'cellfitalign' => '',
-    'border' => false,
-    'hpadding' => 'auto',
-    'vpadding' => 'auto',
-    'fgcolor' => array(0,0,0),
-    'bgcolor' => "",
-    'text' => true,
-    'label' => $id,
-    'font' => 'helvetica',
-    'fontsize' => 12,
-    'stretchtext' => 1
-);
-// CODE 39 - ANSI MH10.8M-1983 - USD-3 - 3 of 9.
-//$pdf->write1DBarcode($id, 'S25+', 0, '', 60, 20, 0.4, $style, 'N');
 $pdf->SetTextColor(25,25,112);
 $pdf->SetFont('aealarabiya', '', 12);
 
-$pdf->writeHTML("<hr>".$comp, true, false, false, false, '');
+$pdf->writeHTML("<br /><br /><hr>".$comp, true, false, false, false, '');
 $pdf->SetTextColor(55,55,55);
 $pdf->setRTL(false);
 $pdf->SetFont('aealarabiya', '', 9);
-$del = "<br /><hr />Developed and Designed by <a href='https://www.facebook.com/smartProg'>Mohammed Ridha</a> Company for IT Solutions <br /> 07822816693 , mohammed.mrm4@gamil.com, www.facebook.com/smartProg";
+$del = "<br /><hr />Developed and Designed by <a href='https://www.facebook.com/smartProg'>Mohammed Ridha</a><br /> 07822816693 , www.facebook.com/smartProg";
 $pdf->writeHTML($del, true, false, false, false, '');
 //$pdf->write2DBarcode($id, 'QRCODE,M',0, 0, 30, 30, $style, 'N');
 $style['position'] = '';
