@@ -126,7 +126,7 @@ $tbl = '
   </tr>
   <tr>
     <td width="153" class="title">المدة</td>
-    <td align="center" width="300">'.$data['days'].'</td>
+    <td align="center" width="300">'.$data['days'].' بوم</td>
   </tr>
   <tr>
     <td width="153" class="title">الغرامة</td>
