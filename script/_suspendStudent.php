@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 header('Content-Type: application/json');
 require_once("_access.php");
 access([1,3,4]);
@@ -63,7 +63,7 @@ if($v->passes() && $date_err == "") {
      $sql = 'insert into students_penalty (student_id,amount,type,note) values(?,?,?,?)';
      $result2=setData($con,$sql,[$student,$penalty,1,'غرمة بسب التأجيل لمدة '.$interval.' يوم']);
      $status_track = 'insert into students_status_tracking (student_id,students_status_id) values(?,?)';
-     $track = setData($con,$status_track,[$student_id[0]['id'],'5']);
+     $track = setData($con,$status_track,[$student,'5']);
     }else{
       $date_err = "ربما تاريخ المباشرة نفس التاريخ الحالي";
     }
@@ -77,5 +77,5 @@ $error = [
          'date'=> $date_err,
          ];
 
-echo json_encode([$interval,'success'=>$success, 'error'=>$error]);
+echo json_encode([$_REQUEST,$interval,'success'=>$success, 'error'=>$error]);
 ?>

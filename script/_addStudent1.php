@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 header('Content-Type: application/json');
 require_once("_access.php");
 access([1,2,4]);
@@ -79,7 +79,7 @@ $v->addRuleMessages([
 $v->addRuleMessage('isPrice', ' المبلغ غير صحيح ');
 
 $v->addRule('isPrice', function($value, $input, $args) {
-  if(preg_match("/^(0|[1-9]\d*)(\.\d{2})?$/",$value) || empty($value)){
+  if(preg_match("/^(0|[1-9]\d*)(\.\d{2})?$/",$value) || $value==0){
     $x=(bool) 1;
   }
   return   $x;
@@ -99,7 +99,7 @@ $v->validate([
     'gran_phone' => [$gran_phone,    'required|isPhoneNumber'],
     'lngs' => [$lngs,    'max(250)'],
     'cer' => [$cer,    'max(250)'],
-    'reg_fee' => [$reg_fee,    'required|isPrice'],
+    'reg_fee' => [$reg_fee,    'isPrice'],
     'discount' => [$discount,    'isPrice'],
 ]);
 // ---- pays vaildation ---

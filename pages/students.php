@@ -425,7 +425,7 @@ getStudents();
 							</div>
 							<div class="form-group">
 								<label>رسوم التسجيل:</label>
-								<input class="form-control" type="number" value="25" name="reg_fee">
+								<input class="form-control" type="number" value="20" name="reg_fee">
 								<span class="form-text text-danger" id="err_reg_fee"></span>
 							</div>
 							<div class="form-group">
