@@ -134,7 +134,7 @@ if($payment_type == 2 && !empty($level)){
         }else if(!validateDate($PayDate[$i])){
           $pays_err = "هناك خطأ بتاريخ القسط ". ($i+1);
           break;
-        }else if($date < $now){
+        }else if($date =< $now){
           $pays_err = "هناك خطأ بتاريخ القسط *".($i+1);
           break;
         }else{
