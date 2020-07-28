@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 header('Content-Type: application/json');
 require_once("_access.php");
 access([1,3,4]);
@@ -35,7 +35,7 @@ if($v->passes()) {
   if($result > 0){
     $success = 1;
     $status_track = 'insert into students_status_tracking (student_id,students_status_id) values(?,?)';
-    $track = setData($con,$status_track,[$student_id[0]['id'],'1']);
+    $track = setData($con,$status_track,[$student,'1']);
   }
 
 }else{
