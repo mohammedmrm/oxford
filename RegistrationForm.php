@@ -255,8 +255,11 @@ ul li {
         <label>Extra amount payment (الاجور الاضافية):</label>
         <label class="cell"><?php echo "$".$student['extra_fee'];?></label><br />
 
+        <label>Discount (الخصم):</label>
+        <label class="cell"><?php echo "$".$student['discount'];?></label><br />
+
         <label>Total Amount (المبلغ الاجمالي):</label>
-        <label class="cell"><?php echo "$".($student['total_price'] + $student['reg_fee'] + $student['extra_fee']);?></label><br />
+        <label class="cell"><?php echo "$".($student['total_price'] + $student['reg_fee'] + $student['extra_fee'] - $student['discount']);?></label><br />
 
 
         <label>Remaining Amount (المبالغ المتبقية):</label>
