@@ -18,10 +18,11 @@ $error = [];
 $name    = $_REQUEST['name'];
 $email   = $_REQUEST['email'];
 $phone   = $_REQUEST['phone'];
-$password   = $_REQUEST['password'];
+$password = $_REQUEST['password'];
 $address  = $_REQUEST['address'];
 $salary  = $_REQUEST['salary'];
 $branch  = $_REQUEST['branch'];
+$end  = $_REQUEST['end'];
 
 $img = $_FILES['img'];
 $documents = $_FILES['documents'];

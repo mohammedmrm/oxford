@@ -84,6 +84,11 @@
 							<span class="form-text text-danger"  id="branch_err"></span>
 						</div>
                         <div class="form-group">
+							<label>تاريخ انتهاء العقد:</label>
+							<input type="date" class="form-control" placeholder="" name="end">
+							<span class="form-text text-danger" id="end_err"></span>
+						</div>
+                        <div class="form-group">
 						   <label>صورة شخصية:</label>
 						   <input class="form-control" type="file" name="img">
 						   <span class="form-text text-danger" id="img_err"></span>
@@ -282,6 +287,7 @@ function addTeacher(){
      $("#email_err").text('');
      $("#password_err").text('');
      $("#documents_err").text('');
+     $("#end_err").text('');
      $("#img_err").text('');
      $("#addTeacherForm").addClass("loading");
     },
@@ -303,6 +309,7 @@ function addTeacher(){
          $("#branch_err").text(res.error.branch);
          $("#documents_err").text(res.error.documents);
          $("#img_err").text(res.error.img);
+         $("#end_err").text(res.error.end);
          Toast.warning("هناك بعض المدخلات غير صالحة",'خطأ');
        }
 
