@@ -238,6 +238,7 @@ $.ajax({
        btns =   '<button type="button" class="btn btn-lg btn-link  text-primary" tooltip="تعديل معلومات الطالب" onclick="editStudent('+this.id+')" data-toggle="modal" data-target="#editStudentsModal"><span class="flaticon-edit"></sapn></button>'+
                 '<button type="button" class="btn btn-lg btn-link  text-success" onclick="updateStudnetid('+this.id+')" data-toggle="modal" data-target="#transferStudentsModal"><span class="fa fa-route"></sapn></button>'+
                 '<button type="button" class="btn btn-lg btn-link  text-info"    onclick="PaysStudent('+this.id+')" data-toggle="modal" data-target="#PaysStudentModal"><span class="fa fa-money-check-alt"></sapn></button>'+
+                '<button type="button" class="btn btn-lg btn-link  text-warning"    onclick="chargeStudentid('+this.id+')" data-toggle="modal" data-target="#chargeStudentModal"><span class="fa fa-money-check-alt"></sapn></button>'+
                 '<button type="button" class="btn btn-lg btn-link  text-info"    onclick="gratuatedStudent('+this.id+')" data-toggle="modal" data-target="#graduatedStudentModal"><span class="fa fa-graduation-cap"></sapn></button>';
      }
      status = this.status;
@@ -720,6 +721,55 @@ getStudents();
     </div>
   </div>
 <?php } ?>
+
+<?php if($a == 4 || $a == 3 || $a==2){?>
+<div class="modal fade" id="chargeStudentModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">تغريم الطالب</h4>
+        </div>
+        <div class="modal-body">
+		<!--begin::Portlet-->
+
+
+			<!--begin::Form-->
+			<form class="kt-form" id="chargeStudentForm">
+               <div class="row">
+               <div class="col-12">
+                  <div class="form-group">
+                  <label>مقدار الغرامه</label>
+                  <input type="number" min="1" max="400" step="1" class="form-control"  name="charge_amount" />
+                  <label class="text-danger" id="charge_amount_err"></label>
+                  </div>
+               </div>
+               </div>
+               <div class="row">
+               <div class="col-12">
+                  <div class="form-group">
+                  <label>السبب</label>
+                  <textarea class="form-control" name="charge_reason"></textarea>
+                  <label class="text-danger" id="charge_reason_err"></label>
+                  </div>
+               </div>
+               <input type="hidden" id="charge_student_id" name="charge_student_id" />
+               <label class="text-danger" id="charge_student_err"></label>
+               </div>
+               <div class="kt-form__actions">
+        			<button type="button" onclick="StudentCharge()" class="btn btn-primary">اضافة</button>
+        			<button type="reset" data-dismiss="modal" class="btn btn-secondary">الغأ</button>
+        		</div>
+			</form>
+			<!--end::Form-->
+		<!--end::Portlet-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+<?php } ?>
 <script type="text/javascript" src="js/getBraches.js"></script>
 <script type="text/javascript" src="js/getLevels.js"></script>
 <script type="text/javascript" src="js/getGroups.js"></script>
@@ -1168,6 +1218,37 @@ function updateStudentPays(){
          console.log(res)
         } ,
         error:function(e){
+          console.log(e);
+        }
+      });
+}
+function chargeStudentid(id){
+  $("#charge_student_id").val(id);
+}
+function StudentCharge(){
+      $.ajax({
+        url:"script/_studentCharge.php",
+        type:"POST",
+        data:$("#chargeStudentForm").serialize(),
+        beforeSend:function(){
+           $("#charge_reason_err").text("");
+           $("#charge_amount_err").text("");
+           $("#chargeStudentForm").addClass("loading");
+        },
+        success:function(res){
+          $("#chargeStudentForm").removeClass("loading");
+         if(res.success == 1){
+           Toast.success('تم');
+         }else{
+           Toast.warning('خطأ');
+           $("#charge_reason_err").text(res.error.reason);
+           $("#charge_amount_err").html(res.error.amount);
+           $("#charge_student_err").html(res.error.student);
+         }
+         console.log(res)
+        } ,
+        error:function(e){
+          $("#chargeStudentForm").removeClass("loading");
           console.log(e);
         }
       });

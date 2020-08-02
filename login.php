@@ -254,7 +254,13 @@ function login(){
     }
   });
 }
-
+$(document).keydown(function(e) {
+  if (event.which === 13 || event.keyCode === 13 ) {
+      event.stopPropagation();
+      event.preventDefault();
+      login();
+  }
+});
 </script>
             </body>
     <!-- end::Body -->
