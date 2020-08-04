@@ -7,7 +7,7 @@ access([1,2,4,3,5]);
 require_once("script/dbconnection.php");
 $id = $_REQUEST['id'];
 try{
-  $query = "select students.*,sum(if(payment.confirm <> 2,payment.amount,0)) as remain, branches.name as branch_name,
+  $query = "select students.*,sum(if(payment.confirm == 0,payment.amount,0)) as remain, branches.name as branch_name,
              DATE_FORMAT(students.date,'%Y/%m/%d') as date,
              levels.name as level_name,
              staff.name as staff_name,
