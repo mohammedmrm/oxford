@@ -94,6 +94,10 @@
               		<option value="50">50</option>
               	</select>
             </div>
+            <div class="col-lg-2 kt-margin-b-10-tablet-and-mobile">
+            	<label>تقرير:</label>
+            	<button type="button" data-toggle="modal" data-target="#addStudentsModal" class="btn btn-primary"> <i class="flaticon2-up"></i>تحميل</button>
+            </div>
             <?php if($a == 4){?>
             <div class="col-lg-2 kt-margin-b-10-tablet-and-mobile">
             	<label>اضافة طالب جديد:</label>
