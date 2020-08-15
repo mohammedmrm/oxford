@@ -24,7 +24,6 @@ try{
   $data = getData($con,$query,[$id]);
   $data = $data[0];
   $success="1";
-  $student = $data[0];
 } catch(PDOException $ex) {
    $data=["error"=>$ex];
    $success="0";
@@ -39,8 +38,9 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('aealarabiya', 'B', 8);
         // Title
-        $footer= "<hr>Developed By Mohammed Ridha - 07822816693";
+        $footer= '<hr>Developed By Mohammed Ridha - 07822816693';
         $this->writeHTML($footer);
+        $this->writeHTML('');
     }
 }
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -96,7 +96,7 @@ $header=    '
                        for language learning & Development
                     </td>
                     <td style="text-align: center;">
-                        <img style="height:200px;" src="img/logos/logoW.jpg" height="100px"/>
+                        <img src="img/logos/logoW.jpg" height="100px"/>
                     </td>
                     <td style="text-align: center;font-size:20px;">
                       <span style="color:#A52A2A;">مؤسسة اكسفورد </span><br /><br />
@@ -231,7 +231,7 @@ $htmlpersian .=
                      Course amount payment (مبلغ الدورة):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
-                      $'.$data['reg_fee'].'
+                      $'.$data['total_price'].'
                     </td>
              </tr>
              <tr>
@@ -247,7 +247,7 @@ $htmlpersian .=
                      Discount (الخصم):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
-                      $'.$student['discount'].'
+                      $'.$data['discount'].'
                     </td>
              </tr>
              <tr>
@@ -255,7 +255,7 @@ $htmlpersian .=
                      Total Amount (المبلغ الاجمالي):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
-                      $'.($student['total_price'] + $student['reg_fee'] + $student['extra_fee'] - $student['discount']).'
+                      $'.($data['total_price'] + $data['reg_fee'] + $data['extra_fee'] - $data['discount']).'
                     </td>
              </tr>
              <tr>
@@ -263,7 +263,7 @@ $htmlpersian .=
                      Remaining Amount (المبالغ المتبقية):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
-                      $'.$student['remain'].'
+                      $'.$data['remain'].'
                     </td>
              </tr>
              <tr>
@@ -271,7 +271,7 @@ $htmlpersian .=
                      Guarantor Name & Phone (اسم الكفيل / رقم الجوال):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
-                      '.$student['gran_name']."/ ".$student['gran_phone'].'
+                      '.$data['gran_name']."/ ".$data['gran_phone'].'
                     </td>
              </tr>
 </table>
