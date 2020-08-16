@@ -128,7 +128,7 @@ $htmlpersian .=
 <table cellpadding="5">
              <tr>
                     <td style="text-align:left;">
-                      Name of The Applicant (اسم مقدم الطلب)
+                      Name of The Applicant (الطلب مقدم اسم)
                     </td>
                     <td style="text-align:left;font-size:14px;font-weight:bold;">
                       '.$data['name'].'
@@ -136,7 +136,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                      Date Of Birth (تاريخ الولادة) (Y-m-d):
+                      Date Of Birth (الولاده تاريخ) (Y-m-d):
                     </td>
                     <td style="text-align:left;font-size:14px;font-weight:bold;">
                       '.$data['birthday'].'
@@ -153,7 +153,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                      Grade (التحصيل الدراسي):
+                      Grade (الدراسي تحصيل):
                     </td>
                     <td style="text-align:left;font-size:14px;font-weight:bold;">
                       '.$data['cer'].'
@@ -161,7 +161,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                      Spoken Languges (اللغات التي تتكلمها):
+                      Spoken Languges (تتكلمها التي الغات):
                     </td>
                     <td style="text-align:left;font-size:14px;font-weight:bold;">
                       '.$data['lngs'].'
@@ -182,7 +182,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Email & phone No. رقم الجوال والبريد الالكتروني
+                     Email & phone No. الاكتروني البريد و الجوال رقم
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       '.$data['phone'].'
@@ -212,7 +212,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Student Category Course (مستوى الطالب في الدورة):
+                     Student Category Course (الدوره في الطالب مستوى):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       '.$data['level_name'].'
@@ -220,7 +220,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Registration amount payment (مبلغ التسجيل):
+                     Registration amount payment (التسجيل مبلغ ):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       $'.$data['reg_fee'].'
@@ -228,7 +228,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Course amount payment (مبلغ الدورة):
+                     Course amount payment ( الدورة مبلغ ):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       $'.$data['total_price'].'
@@ -236,7 +236,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Extra amount payment (الاجور الاضافية):
+                     Extra amount payment (الاضافية الاجور ):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       $'.$data['extra_fee'].'
@@ -252,7 +252,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Total Amount (المبلغ الاجمالي):
+                     Total Amount (الاجمالي المبلغ ):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       $'.($data['total_price'] + $data['reg_fee'] + $data['extra_fee'] - $data['discount']).'
@@ -260,7 +260,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Remaining Amount (المبالغ المتبقية):
+                     Remaining Amount (المتبقية المبالغ ):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       $'.$data['remain'].'
@@ -268,7 +268,7 @@ $htmlpersian .=
              </tr>
              <tr>
                     <td style="text-align:left;">
-                     Guarantor Name & Phone (اسم الكفيل / رقم الجوال):
+                     Guarantor Name & Phone (الكفيل اسم / الجوال رقم):
                     </td>
                     <td style="font-size:14px;color:#A52A2A;">
                       '.$data['gran_name']."/ ".$data['gran_phone'].'
