@@ -38,7 +38,7 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('aealarabiya', 'B', 8);
         // Title
-        $footer= '<hr>Developed By Mohammed Ridha - 07822816693';
+        $footer= '<hr>Help Desk - 07812265040';
         $this->writeHTML($footer);
         $this->writeHTML('');
     }

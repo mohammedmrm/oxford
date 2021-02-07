@@ -224,6 +224,9 @@ License: You must have a valid license purchased only from https://themes.getboo
           navigator.serviceWorker.register('sw.js')
         });
       }
+        $('img').on('error',function(){
+        this.src='img/default.png';
+        });
       </script>
 	</body>
 
