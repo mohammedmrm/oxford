@@ -27,7 +27,7 @@ $year = date('y');
 
 if($error == ""){
   $sql = "select * from students where
-  branch_id=? and student_number like '".$serial."%".$year."' order by serial ASC limit 1";
+  student_number like '".$serial."%".$year."' order by serial";
   $result = getData($con,$sql,[$_SESSION['user_details']['branch_id']]);
   $count = count($result);
   if($count == 0){
