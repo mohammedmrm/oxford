@@ -154,8 +154,9 @@ if($config[0]['maxDiscount'] < $discount ){
 }else{
  $disscont_err = implode($v->errors()->get('discount'));
 }
+try{
 if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "" || empty($img_err)) && ($passport_err == "" || empty($passport_err)) && ($pays_err == "" || empty($pays_err))) {
-  try{
+
   if($img['size'] != 0){
     $id = uniqid();
     mkdir("../img/student/img/", 0700);
@@ -226,9 +227,7 @@ if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "
           $status_track = 'insert into students_status_tracking (student_id,students_status_id) values(?,?)';
           $track = setData($con,$status_track,[$student_id[0]['id'],'1']);
   }
-  }catch(PDOEXCEPTION $e){
-   $error = $e;
-  }
+
 }else{
   $error = [
            'name'=> implode($v->errors()->get('name')),
@@ -255,5 +254,8 @@ if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "
            'pays_err'=>$pays_err,
            ];
 }
+  }catch(EXCEPTION $e){
+   $error = $e;
+  }
 echo json_encode([$v,'success'=>$success, 'error'=>$error]);
 ?>
