@@ -225,7 +225,7 @@ License: You must have a valid license purchased only from https://themes.getboo
         });
       }
         $('img').on('error',function(){
-        this.src='img/default.png';
+        this.src='img/student/d.png';
         });
       </script>
 	</body>
