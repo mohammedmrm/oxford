@@ -255,5 +255,5 @@ if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "
            'pays_err'=>$pays_err,
            ];
 }
-echo json_encode([$v->errors(),'success'=>$success, 'error'=>$error]);
+echo json_encode([$v->errors()->get(),'success'=>$success, 'error'=>$error]);
 ?>
