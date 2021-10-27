@@ -154,7 +154,7 @@ if($config[0]['maxDiscount'] < $discount ){
 }else{
  $disscont_err = implode($v->errors()->get('discount'));
 }
-if($v->passes() && $disscont_err=="" && $img_err == "" && $passport_err == "" && $pays_err == "") {
+if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "" || empty($img_err)) && ($passport_err == "" || empty($passport_err)) && ($pays_err == "" || empty($pays_err))) {
   try{
   if($img['size'] != 0){
     $id = uniqid();
