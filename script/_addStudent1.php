@@ -254,8 +254,8 @@ if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "
            'pays_err'=>$pays_err,
            ];
 }
-  }catch(EXCEPTION $e){
+}catch(EXCEPTION $e){
    $error = $e;
-  }
-echo json_encode([$v,'success'=>$success, 'error'=>$error]);
+}
+echo json_encode(['success'=>$success, 'error'=>$error]);
 ?>
