@@ -255,5 +255,5 @@ if($v->passes() && ($disscont_err=="" || empty($disscont_err)) && ($img_err == "
            'pays_err'=>$pays_err,
            ];
 }
-echo json_encode([$config[0]['maxDiscount'],'success'=>$success, 'error'=>$error]);
+echo json_encode([$v->passes(),'success'=>$success, 'error'=>$error]);
 ?>
