@@ -95,7 +95,7 @@
               	</select>
             </div>
             <div class="col-lg-2 kt-margin-b-10-tablet-and-mobile">
-            	<label>تقرير:</label>
+            	<label>تقرير:</label><br />
             	<button type="button" data-toggle="modal" data-target="#addStudentsModal" class="btn btn-primary"> <i class="flaticon2-up"></i>تحميل</button>
             </div>
             <?php if($a == 4){?>
@@ -161,7 +161,7 @@ $.ajax({
     $("#tb-student").addClass("loading");
   },
   success:function(res){
-
+  console.log(res);
   if(res.role != 1 && res.role != 3){
     $("#branch").attr("disabled",true);
   }else{
@@ -261,9 +261,7 @@ $.ajax({
 
      $("#studentesTable").append(
        '<tr>'+
-            '<td>'+
-              '<img class="user-img" src="img/student/'+this.img+'"/>'+
-            '</td>'+
+            '<td></td>'+
             '<td width="200px"><a href="RegistrationForm.php?id='+this.id+'" target="_blank" title="استمارة التسجيل">'+this.student_number+'</a></td>'+
             '<td><a target="_blank" href="contract.php?id='+this.id+'" target="_blank">'+this.name+'</a></td>'+
             '<td><a href="studentReport.php?id='+this.id+'" target="_blank">'+this.phone+'</a></td>'+
@@ -281,21 +279,6 @@ $.ajax({
      });
      $("#tb-student").DataTable().destroy();
      var myTable= $('#tb-student').DataTable({
-     columns:[
-    //"dummy" configuration
-        { visible: true }, //col 1
-        { visible: true }, //col 2
-        { visible: true }, //col 3
-        { visible: true }, //col 4
-        { visible: true }, //col 5
-        { visible: true }, //col 6
-        { visible: true }, //col 7
-        { visible: true }, //col 8
-        { visible: true }, //col 9
-        { visible: true }, //col 10
-        { visible: true }, //col 11
-        { visible: true }, //col 12
-        ],
        "bPaginate": false,
        "bLengthChange": false,
        "bFilter": false,
@@ -1095,7 +1078,7 @@ function unkickStudnet(id){
 }
 
 function gratuatedStudent(id){
-  if(confirm("هل انت متاكد من تخرج الطالب")){
+  if(this.confirm("هل انت متاكد من تخرج الطالب")){
       $.ajax({
         url:"script/_gratuatedStudent.php",
         type:"POST",

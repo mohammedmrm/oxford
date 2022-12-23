@@ -48,9 +48,10 @@ try{
   }
 
   if(!empty($student_number)){
-    $filter .= " and (student_number like '%".$student_number."%')";
+    $filter .= " and (phone like '%".$student_number."%')";
   }
   if(!empty($student_name)){
+    $student_name =  preg_replace('/\s+/', '%', $student_name);
     $filter .= " and students.name like '%".$student_name."%'";
   }
   if($status >= 1){
